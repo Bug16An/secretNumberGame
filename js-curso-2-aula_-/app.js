@@ -1,8 +1,4 @@
-// let title = document.querySelector('h1');
-// title.innerHTML = 'Secret number game';
-
-// let paragraph = document.querySelector('p');
-// paragraph.innerHTML = 'Choose a number betwen 1 and 100';
+let drawnNumberList = [];
 let secretNumber = generateRandomNumber();
 let atempts = 1;
 
@@ -39,7 +35,14 @@ function checkGuess () {
 }
 
 function generateRandomNumber() {
-    return parseInt(Math.random() * 100 + 1);
+    let chosenNumber = parseInt(Math.random() * 100 + 1);
+    if (drawnNumberList.includes(chosenNumber)) {
+        return generateRandomNumber();
+    } else {
+        drawnNumberList.push(chosenNumber);
+        console.log(drawnNumberList);
+        return chosenNumber;
+    }
 }
 
 function cleanCamp () {
