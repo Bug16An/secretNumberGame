@@ -1,4 +1,5 @@
 let drawnNumberList = [];
+let limitNumber = 100;
 let secretNumber = generateRandomNumber();
 let atempts = 1;
 
@@ -35,7 +36,13 @@ function checkGuess () {
 }
 
 function generateRandomNumber() {
-    let chosenNumber = parseInt(Math.random() * 100 + 1);
+    let chosenNumber = parseInt(Math.random() * limitNumber + 1);
+    let numberElementsInList = drawnNumberList.length;
+    if (numberElementsInList === limitNumber){
+        drawnNumberList = [];
+    }
+
+
     if (drawnNumberList.includes(chosenNumber)) {
         return generateRandomNumber();
     } else {
